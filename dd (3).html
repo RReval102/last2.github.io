@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Последний Выбор - Психологическая игра</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Основные стили для мрачной темы */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A; /* Еще более темный фон */
+            color: #A0A0A0; /* Более тусклый цвет текста */
+        }
+        .hero-bg {
+            /* Фоновое изображение с более сильным затемнением */
+            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 1)), url('https://images.unsplash.com/photo-1502691851199-a9ab4a3c35a1?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        /* Новый, приглушенный зеленый цвет для акцентов */
+        .dull-green-glow {
+            box-shadow: 0 0 15px rgba(47, 101, 69, 0.5), 0 0 5px rgba(47, 101, 69, 0.7);
+        }
+        .dull-green-text-glow {
+            text-shadow: 0 0 10px rgba(47, 101, 69, 0.8);
+        }
+        .dull-green-text {
+            color: #2f6545;
+        }
+        .dull-green-bg {
+            background-color: #2f6545;
+        }
+        .dull-green-border {
+            border-color: #2f6545;
+        }
+        .choice-button {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(47, 101, 69, 0.4);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .choice-button:hover {
+            background-color: rgba(47, 101, 69, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(47, 101, 69, 0.6), 0 0 8px rgba(47, 101, 69, 0.8);
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section: Главный экран с выбором -->
+    <header class="hero-bg min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-[#2f6545] rounded-full mix-blend-hard-light filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-[#2a523a] rounded-full mix-blend-hard-light filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        
+        <div class="text-center z-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase dull-green-text-glow text-gray-200">Последний Выбор</h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
+                Холодный дождь. Крик ребенка. Приближающийся гул с небес.
+                У тебя есть мгновение, чтобы решить. Этот выбор определит всё.
+            </p>
+        </div>
+
+        <!-- Сцена выбора -->
+        <div class="mt-12 md:mt-16 w-full max-w-4xl text-center z-10">
+            <p class="mb-6 dull-green-text font-bold text-lg animate-pulse">Метеорит почти достиг цели. Кого ты спасешь в бункере?</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+                <!-- Кнопка выбора 1 -->
+                <div class="choice-button rounded-lg p-6 text-center cursor-pointer group">
+                    <h3 class="text-2xl font-bold text-gray-200">Спасти женщину с ребенком</h3>
+                    <p class="mt-2 text-gray-500 group-hover:text-gray-300 transition-colors">Невинные жизни, будущее человечества в их руках. Они не знают тебя, но полностью на тебя полагаются.</p>
+                </div>
+                <!-- Кнопка выбора 2 -->
+                <div class="choice-button rounded-lg p-6 text-center cursor-pointer group">
+                    <h3 class="text-2xl font-bold text-gray-200">Спасти свою мать</h3>
+                    <p class="mt-2 text-gray-500 group-hover:text-gray-300 transition-colors">Она дала тебе жизнь. Вся твоя история связана с ней. Оставить ее — значит предать свои корни.</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 text-gray-600 text-sm animate-bounce">
+            ↓ Узнай больше об игре ↓
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Секция "Об игре" -->
+        <section id="about" class="py-20 md:py-32 bg-[#0A0A0A] section-fade-in">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-200">Это не просто игра. Это зеркало.</h2>
+                <div class="w-24 h-1 dull-green-bg mx-auto mb-8"></div>
+                <p class="text-lg text-gray-400 leading-relaxed">
+                    "Последний Выбор" — это интерактивная психологическая драма на 30-40 минут, где каждое ваше решение, каждая секунда размышления и каждый поднятый предмет анализируются. Мы не оцениваем вас, мы лишь отражаем ваши собственные решения. В конце пути вы получите не просто результат, а детальный психологический портрет, основанный на вашем уникальном прохождении. Узнайте, что ваши инстинкты говорят о вас, когда вы стоите на краю гибели.
+                </p>
+            </div>
+        </section>
+
+        <!-- НОВАЯ Секция "Галерея" -->
+        <section id="gallery" class="py-20 md:py-24 bg-[#101010] section-fade-in">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-200">Погрузитесь в атмосферу</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Замените src на путь к вашему изображению -->
+                    <div class="bg-black rounded-lg overflow-hidden border border-gray-900">
+                        <img src="https://sun9-44.userapi.com/s/v1/ig2/VRWywaAzzN98OL54EdNaixlpTNiYUcvECXArTLgN410S5Tr-3OdC9JBZjqV-YyzL_3jcxXHIEZ6hpdsJtKMTlBZA.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,512x512&from=bu&u=N9V0QRn-iwnR7m0mqzhSAI1HMM0xd3VMa1E6LZjXFTs&cs=512x0" alt="Скриншот из игры 1" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <!-- Замените src на путь к вашему изображению -->
+                    <div class="bg-black rounded-lg overflow-hidden border border-gray-900 lg:col-span-2 md:col-span-1 col-span-1">
+                        <img src="https://sun9-58.userapi.com/s/v1/ig2/Yd55Hx6wr8E1h1ens4kgC4L2X-ydZt_AxaeXdJazFSUmBp7UYYaHN5dUJHPkQ6XHwyV2GcYq6-eODGTqJxUpP9Nd.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,512x512&from=bu&u=wFGf73JIEgq8B5bu97_XDBDF5a4wAAzvEOvweQWutM4&cs=512x0" alt="Скриншот из игры 2" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                     <!-- Замените src на путь к вашему изображению -->
+                    <div class="bg-black rounded-lg overflow-hidden border border-gray-900 lg:col-span-2 md:col-span-1 col-span-1">
+                        <img src="https://sun9-2.userapi.com/s/v1/ig2/ccJK7U-_V8j_R8WB5RuvX82_aJKG1yRZJG5eivrcLoVBapd8ECmedx9Ep2ZJardx-cKZo46cP23_VeHOAa-MjSYX.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,512x512&from=bu&u=NbwJh4De4Yw98cC3df3c2wQRjNvUflF7L1pYpIZQWec&cs=512x0" alt="Скриншот из игры 3" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                     
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Особенности" -->
+        <section id="features" class="py-20 md:py-32 bg-[#0A0A0A] section-fade-in">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-200">Ключевые особенности</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Особенность 1 -->
+                    <div class="bg-black p-6 rounded-lg border border-gray-900 hover:border-[#2f6545] transition-all duration-300">
+                        <h3 class="text-xl font-bold dull-green-text mb-2">Глубокий анализ</h3>
+                        <p class="text-gray-500">Система учитывает не только сам выбор, но и время, потраченное на него, последовательность действий и второстепенные взаимодействия.</p>
+                    </div>
+                    <!-- Особенность 2 -->
+                    <div class="bg-black p-6 rounded-lg border border-gray-900 hover:border-[#2f6545] transition-all duration-300">
+                        <h3 class="text-xl font-bold dull-green-text mb-2">Нелинейный нарратив</h3>
+                        <p class="text-gray-500">Десятки моральных дилемм, которые формируют уникальную историю. Нет двух одинаковых прохождений.</p>
+                    </div>
+                    <!-- Особенность 3 -->
+                    <div class="bg-black p-6 rounded-lg border border-gray-900 hover:border-[#2f6545] transition-all duration-300">
+                        <h3 class="text-xl font-bold dull-green-text mb-2">Атмосферное погружение</h3>
+                        <p class="text-gray-500">Минималистичный дизайн, напряженная музыка и звуковые эффекты создают давящую атмосферу, где каждое решение имеет вес.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Call to Action" -->
+        <section id="cta" class="py-20 md:py-32 bg-black text-center section-fade-in">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-5xl font-extrabold dull-green-text-glow text-gray-200">Готовы узнать, кто вы на самом деле?</h2>
+                <p class="mt-4 text-lg text-gray-400">Игра доступна для скачивания. Сделайте свой выбор.</p>
+                <div class="mt-8">
+                    <a href="#" class="inline-block dull-green-bg text-gray-900 font-bold text-lg px-10 py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 dull-green-glow">
+                        Скачать с GitHub
+                    </a>
+                </div>
+                 <p class="mt-4 text-sm text-gray-600">(Здесь будет ссылка на ваш репозиторий или страницу релиза)</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center text-gray-700">
+            <p>&copy; 2024 [Ваше Имя или Название Студии]. Все права защищены.</p>
+            <p>Игра создана на Kotlin. Сайт разработан с любовью.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Плавное появление секций при скролле
+        const sections = document.querySelectorAll('.section-fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
